@@ -32,14 +32,14 @@ include_once "connector.php";
                     <li class="nav-item">
                         <a class="nav-link">Bienvenue <?php echo $_SESSION['prenom'].' '. $_SESSION['nom']; ?> </a>
                     </li>
+                    <li class="nav-item">
+                        <img src="<?php echo base64_decode($_SESSION['profilepic']); ?>" alt="" />
+                    </li>
             <?php } else {?>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pictionnary</a>
                 </li>
             <?php } ?>
-            <li class="nav-item">
-                <img src="<?php echo base64_decode($_SESSION['profilepic']); ?>" alt="" />
-            </li>
         </ul>
 
 
