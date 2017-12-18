@@ -39,7 +39,7 @@ include "header.php";
             </div>
 
         <?php }
-            if (isset($_SESSION['id'])){
+            if (isset($_SESSION['id']) AND isset($_SESSION['id_users'])){
                 $sql = $bdd->prepare("SELECT * FROM drawings WHERE id_users = :id_users");
                 $sql->bindValue(':id_users', $_SESSION['id_users'], PDO::PARAM_INT);
                 $sql->execute();

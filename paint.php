@@ -76,6 +76,9 @@ if(!isset($_SESSION['prenom'])) {
                 context.closePath()
                 context.fill();
 
+                x0 = e.x;
+                y0 = e.y;
+
                 isDrawing = true;
             };
 
@@ -99,6 +102,9 @@ if(!isset($_SESSION['prenom'])) {
                     context.stroke();
                     context.closePath();
                     context.fill();
+
+                    x0 = e.x;
+                    y0 = e.y;
                 }
             };
 

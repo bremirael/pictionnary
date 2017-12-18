@@ -9,7 +9,13 @@ if(!isset($_SESSION['id'])) {
     // ici, récupérer la liste des commandes dans la table DRAWINGS avec l'identifiant $_GET['id']
     // l'enregistrer dans la variable $commands
     $id = $_GET['id'];
-    
+
+    $sql = $bdd->prepare("SELECT * FROM drawings WHERE id = :id");
+    $sql->bindValue(":id", $id, PDO::PARAM_INT);
+    $sql->execute();
+    $result = $sql->fetch(PDO::FETCH_ASSOC);
+    $commands = $result['commande'];
+
 }
 
 ?>
@@ -26,23 +32,37 @@ if(!isset($_SESSION['id'])) {
         var x0, y0;
         // le tableau de commandes de dessin à envoyer au serveur lors de la validation du dessin
         var drawingCommands = <?php echo $commands;?>;
-
+        console.log(drawingCommands);
         window.onload = function() {
             var canvas = document.getElementById('myCanvas');
             canvas.width = 400;
             canvas.height= 400;
+
+
             var context = canvas.getContext('2d');
 
             var start = function(c) {
-                // complétez
+                size =  c.size;
+                color = c.color;
+
+                y0 = c.y;
+                x0 = c.x;
             }
 
             var draw = function(c) {
-                // complétez
+                context.beginPath();
+                context.fillStyle = c.color.toString();
+                context.arc(75, 75, 50, 0, Math.PI * 2);
+                context.stroke();
+                context.closePath();
+                context.fill();
+
+                y0 = c.y;
+                x0 = c.x;
             }
 
             var clear = function() {
-                // complétez
+                context.clearRect(0, 0, canvas.width, canvas.height);
             }
 
             // étudiez ce bout de code
